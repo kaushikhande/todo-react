@@ -4,7 +4,7 @@ import axios from 'axios';
 import Todo from './containers/todos'
 
 function App() {
-  axios.defaults.baseURL = 'http://localhost:3001/';
+  axios.defaults.baseURL = process.env.REACT_APP_API_BASE_URL;
 
   return (
     <Todo />

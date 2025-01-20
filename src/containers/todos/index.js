@@ -13,7 +13,7 @@ export default function Todo() {
   const fetchtodos = async () => {
     const response = await axios.get('api/v1/todos',
     {
-      headers: {"Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE3MzczNjQ3ODh9.cCmwh9Bu-XDITZbyqI2ZqHfu-TQ2XW1xo-JMNL5R2cA"}
+      headers: {"Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE3Mzc0Nzg1MzZ9.FAn8Z-pXBa4MJXPKO6mba1xhf0QCQPr9ndKK-QGPeuw"}
     } );
     setTodos(response.data.todos);
   };

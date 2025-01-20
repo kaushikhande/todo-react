@@ -1,4 +1,7 @@
-import { useEffect, useState } from 'react';
+import {
+  useEffect,
+  useState
+} from 'react';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
@@ -11,11 +14,15 @@ export default function Todo() {
   const [todos, setTodos] = useState([]);
 
   const fetchtodos = async () => {
-    const response = await axios.get('api/v1/todos',
-    {
-      headers: {"Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE3Mzc0Nzg1MzZ9.FAn8Z-pXBa4MJXPKO6mba1xhf0QCQPr9ndKK-QGPeuw"}
-    } );
-    setTodos(response.data.todos);
+    const response = await axios.get('api/v1/todos', {
+      headers: {
+        "Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE3Mzc0Nzg1MzZ9.FAn8Z-pXBa4MJXPKO6mba1xhf0QCQPr9ndKK-QGPeuw"
+      }
+    }).then(function(response) {
+      setTodos(response.data.todos)
+    }).catch(function(error) {
+      console.log(error);
+    });
   };
 
   useEffect(() => {
@@ -27,7 +34,8 @@ export default function Todo() {
   };
 
 	return <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
-      {todos.map((todo) => {
+  {
+    todos.map((todo) => {
         const labelId = `checkbox-list-label-${todo.id}`;
 
         return (

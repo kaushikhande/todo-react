@@ -14,9 +14,11 @@ export default function Todo() {
   const [todos, setTodos] = useState([]);
 
   const fetchtodos = async () => {
+    const token = localStorage.getItem("jwtToken");
+
     const response = await axios.get('api/v1/todos', {
       headers: {
-        "Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE3Mzc0Nzg1MzZ9.FAn8Z-pXBa4MJXPKO6mba1xhf0QCQPr9ndKK-QGPeuw"
+        "Authorization": `Bearer ${token}`
       }
     }).then(function(response) {
       setTodos(response.data.todos)
